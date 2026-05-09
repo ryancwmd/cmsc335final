@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<article class="recipe-detail">
+  <div class="recipe-hero">
+    <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
+    <div class="recipe-hero-text">
+      <span class="tag"><%= meal.strCategory %></span>
+      <h1><%= meal.strMeal %></h1>
+      <% if (meal.strArea) { %>
+        <p class="origin">Origin: <%= meal.strArea %></p>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+        <% ingredients.forEach(item => { %>
+          <li><span class="measure"><%= item.measure %></span> <%= item.name %></li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <div class="instructions-text">
+        <%- meal.strInstructions.replace(/\r\n|\r|\n/g, '<br>') %>
+      </div>
+      <% if (meal.strYoutube) { %>
+        <a href="<%= meal.strYoutube %>" target="_blank" class="btn btn-secondary">Watch Video</a>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="save-section">
+    <h2>Save to My Notebook</h2>
+    <form action="/cookbook" method="POST" class="save-form">
+      <input type="hidden" name="mealId"    value="<%= meal.idMeal %>">
+      <input type="hidden" name="name"      value="<%= meal.strMeal %>">
+      <input type="hidden" name="category"  value="<%= meal.strCategory %>">
+      <input type="hidden" name="thumbnail" value="<%= meal.strMealThumb %>">
+
+      <div class="form-group">
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Personal Notes</label>
+        <textarea name="notes" id="notes" rows="4" placeholder="Tips, modifications, memories..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save to Notebook</button>
+    </form>
+  </div>
+</article>
+
+<%- include('partials/footer') %>

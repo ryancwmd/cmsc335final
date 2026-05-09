@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+  <h1>My Notebook</h1>
+  <p>Your saved baking recipes.</p>
+</section>
+
+<% if (recipes.length === 0) { %>
+  <div class="empty-state">
+    <p>Your notebook is empty.</p>
+    <a href="/" class="btn btn-primary">Discover Recipes</a>
+  </div>
+<% } else { %>
+  <div class="cookbook-grid">
+    <% recipes.forEach(recipe => { %>
+      <div class="cookbook-card">
+        <img src="<%= recipe.thumbnail %>" alt="<%= recipe.name %>">
+        <div class="cookbook-card-body">
+          <h3><%= recipe.name %></h3>
+          <div class="card-tags">
+            <% if (recipe.category) { %><span class="tag"><%= recipe.category %></span><% } %>
+            <span class="difficulty-badge difficulty-<%= recipe.difficulty.toLowerCase() %>"><%= recipe.difficulty %></span>
+          </div>
+          <% if (recipe.notes) { %>
+            <p class="notes">"<%= recipe.notes %>"</p>
+          <% } %>
+          <div class="card-actions">
+            <a href="/recipe/<%= recipe.mealId %>" class="btn btn-secondary">View Recipe</a>
+            <form action="/cookbook/<%= recipe._id %>" method="POST" style="display:inline;">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-danger" onclick="return confirm('Remove from notebook?')">Remove</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

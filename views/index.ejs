@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <span class="hero-eyebrow">Artisan Baking Recipes</span>
+  <h1>Baker's Notebook</h1>
+  <p class="hero-sub">Discover recipes from around the world and save your favorites to your personal notebook.</p>
+  <form class="search-form" action="/search" method="GET">
+    <input type="text" name="q" placeholder="Search for cakes, cookies, bread..." value="<%= query %>" required>
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<section class="featured-section">
+  <div class="section-heading"><h2>Featured Desserts</h2></div>
+  <% if (featured.length === 0) { %>
+    <p class="empty-state">Could not load recipes. Check your connection and try again.</p>
+  <% } else { %>
+    <div class="recipe-grid">
+      <% featured.forEach(meal => { %>
+        <a href="/recipe/<%= meal.idMeal %>" class="recipe-card">
+          <div class="recipe-card-img">
+            <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
+          </div>
+          <div class="recipe-card-body">
+            <h3><%= meal.strMeal %></h3>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>

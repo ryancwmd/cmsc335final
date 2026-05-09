@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+  <h1>Results for "<%= query %>"</h1>
+  <form class="search-form" action="/search" method="GET">
+    <input type="text" name="q" value="<%= query %>" required>
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<% if (meals.length === 0) { %>
+  <p class="empty-state">No recipes found for "<%= query %>". Try a different search term.</p>
+<% } else { %>
+  <p class="result-count"><%= meals.length %> recipe<%= meals.length !== 1 ? 's' : '' %> found</p>
+  <div class="recipe-grid">
+    <% meals.forEach(meal => { %>
+      <a href="/recipe/<%= meal.idMeal %>" class="recipe-card">
+        <div class="recipe-card-img">
+          <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
+        </div>
+        <div class="recipe-card-body">
+          <h3><%= meal.strMeal %></h3>
+          <span class="tag"><%= meal.strCategory %></span>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>
