@@ -2,7 +2,7 @@
 
 Submitted by: Ryan Whittaker (rwhittak)
 
-Group Members: Ryan Whittaker (rwhittak)
+Group Members: Ryan Whittaker (rwhittak), Ethan Fu (efu23)
 
 App Description: Discover baking recipes from around the world and save favorites to a personal notebook with notes and difficulty ratings.
 
