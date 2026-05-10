@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const SavedRecipe = require('../models/SavedRecipe');
 
 const MEAL_DB = 'https://www.themealdb.com/api/json/v1/1';
 
@@ -44,7 +45,8 @@ router.get('/recipe/:id', async (req, res) => {
       }
     }
 
-    res.render('recipe', { meal, ingredients });
+    const saved = await SavedRecipe.findOne({ mealId: meal.idMeal });
+    res.render('recipe', { meal, ingredients, isSaved: !!saved });
   } catch (err) {
     console.error('Recipe detail error:', err.message);
     res.status(500).render('error', { message: 'Failed to load recipe' });

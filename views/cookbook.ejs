@@ -24,6 +24,13 @@
           <% if (recipe.notes) { %>
             <p class="notes">"<%= recipe.notes %>"</p>
           <% } %>
+          <form action="/cookbook/<%= recipe._id %>/difficulty" method="POST" class="difficulty-form">
+            <select name="difficulty" onchange="this.form.submit()">
+              <option value="Easy"   <%= recipe.difficulty === 'Easy'   ? 'selected' : '' %>>Easy</option>
+              <option value="Medium" <%= recipe.difficulty === 'Medium' ? 'selected' : '' %>>Medium</option>
+              <option value="Hard"   <%= recipe.difficulty === 'Hard'   ? 'selected' : '' %>>Hard</option>
+            </select>
+          </form>
           <div class="card-actions">
             <a href="/recipe/<%= recipe.mealId %>" class="btn btn-secondary">View Recipe</a>
             <form action="/cookbook/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">

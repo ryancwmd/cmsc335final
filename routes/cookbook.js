@@ -27,6 +27,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.post('/:id/difficulty', async (req, res) => {
+  try {
+    await SavedRecipe.findByIdAndUpdate(req.params.id, { difficulty: req.body.difficulty });
+    res.redirect(303, '/cookbook');
+  } catch (err) {
+    console.error('Update difficulty error:', err.message);
+    res.status(500).render('error', { message: 'Failed to update difficulty' });
+  }
+});
+
 router.delete('/:id', async (req, res) => {
   try {
     await SavedRecipe.findByIdAndDelete(req.params.id);

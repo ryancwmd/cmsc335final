@@ -504,6 +504,14 @@ main.container {
   max-width: 520px;
 }
 
+.already-saved {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--espresso-light);
+  margin: 0;
+}
+
 .save-section h2 {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem;
@@ -617,6 +625,21 @@ main.container {
   color: var(--espresso-light);
   margin: 0.5rem 0 0.75rem;
   line-height: 1.5;
+}
+
+.difficulty-form {
+  margin-top: 0.75rem;
+}
+
+.difficulty-form select {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background-color: var(--card-bg);
+  color: var(--espresso);
+  cursor: pointer;
 }
 
 .card-actions {

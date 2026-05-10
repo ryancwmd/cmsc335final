@@ -34,29 +34,33 @@
   </div>
 
   <div class="save-section">
-    <h2>Save to My Notebook</h2>
-    <form action="/cookbook" method="POST" class="save-form">
-      <input type="hidden" name="mealId"    value="<%= meal.idMeal %>">
-      <input type="hidden" name="name"      value="<%= meal.strMeal %>">
-      <input type="hidden" name="category"  value="<%= meal.strCategory %>">
-      <input type="hidden" name="thumbnail" value="<%= meal.strMealThumb %>">
+    <% if (isSaved) { %>
+      <p class="already-saved">Added to Notebook</p>
+    <% } else { %>
+      <h2>Save to My Notebook</h2>
+      <form action="/cookbook" method="POST" class="save-form">
+        <input type="hidden" name="mealId"    value="<%= meal.idMeal %>">
+        <input type="hidden" name="name"      value="<%= meal.strMeal %>">
+        <input type="hidden" name="category"  value="<%= meal.strCategory %>">
+        <input type="hidden" name="thumbnail" value="<%= meal.strMealThumb %>">
 
-      <div class="form-group">
-        <label for="difficulty">Difficulty</label>
-        <select name="difficulty" id="difficulty">
-          <option value="Easy">Easy</option>
-          <option value="Medium" selected>Medium</option>
-          <option value="Hard">Hard</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label for="difficulty">Difficulty</label>
+          <select name="difficulty" id="difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="notes">Personal Notes</label>
-        <textarea name="notes" id="notes" rows="4" placeholder="Tips, modifications, memories..."></textarea>
-      </div>
+        <div class="form-group">
+          <label for="notes">Personal Notes</label>
+          <textarea name="notes" id="notes" rows="4" placeholder="Tips, modifications, memories..."></textarea>
+        </div>
 
-      <button type="submit" class="btn btn-primary">Save to Notebook</button>
-    </form>
+        <button type="submit" class="btn btn-primary">Save to Notebook</button>
+      </form>
+    <% } %>
   </div>
 </article>
 
