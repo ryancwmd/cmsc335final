@@ -26,8 +26,7 @@
           <% } %>
           <div class="card-actions">
             <a href="/recipe/<%= recipe.mealId %>" class="btn btn-secondary">View Recipe</a>
-            <form action="/cookbook/<%= recipe._id %>" method="POST" style="display:inline;">
-              <input type="hidden" name="_method" value="DELETE">
+            <form action="/cookbook/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
               <button type="submit" class="btn btn-danger" onclick="return confirm('Remove from notebook?')">Remove</button>
             </form>
           </div>

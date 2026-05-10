@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     await SavedRecipe.findByIdAndDelete(req.params.id);
-    res.redirect('/cookbook');
+    res.redirect(303, '/cookbook');
   } catch (err) {
     console.error('Delete recipe error:', err.message);
     res.status(500).render('error', { message: 'Failed to delete recipe' });
