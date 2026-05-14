@@ -12,6 +12,6 @@ APIs: [TheMealDB](https://www.themealdb.com/api.json/)
 
 Contact Email: rwhittak@terpmail.umd.edu
 
-Deployed App Link: [Add after deploying to Render]
+Deployed App Link: [Link](https://cmsc335final-20pm.onrender.com/)
 
 AI Use: Claude Code
